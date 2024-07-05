@@ -16,10 +16,9 @@ function Home() {
     return call?.state?.startsAt?.toLocaleDateString() === new Date().toLocaleDateString()
   }).map((call) => {
     return call?.state?.startsAt?.toLocaleTimeString('vi-VN', {hour: '2-digit', minute: '2-digit'})
-  })
+  }).sort();
 
   const { user } = useUser();
-  console.log(user?.emailAddresses[0].emailAddress);
   
   const time = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute: '2-digit'});
   const date = (new Intl.DateTimeFormat('vi-VN', {dateStyle: 'full'})).format(new Date())
