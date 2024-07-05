@@ -15,20 +15,20 @@ function Home() {
   const todayCalls = calls.filter((call) => {
     return call?.state?.startsAt?.toLocaleDateString() === new Date().toLocaleDateString()
   }).map((call) => {
-    return call?.state?.startsAt?.toLocaleTimeString('vi-VN', {hour: '2-digit', minute: '2-digit'})
+    return call?.state?.startsAt?.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'})
   }).sort();
 
   const { user } = useUser();
   
-  const time = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute: '2-digit'});
-  const date = (new Intl.DateTimeFormat('vi-VN', {dateStyle: 'full'})).format(new Date())
+  const time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+  const date = (new Intl.DateTimeFormat('en-US', {dateStyle: 'full'})).format(new Date())
 
   return (
     <section className="flex size-full flex-col gap-5 text-white">
       <div className="h-[303px] w-full rounded-[20px] bg-hero bg-cover">
         <div className='flex h-full flex-col justify-between max-md:px-5 max-md:py-8 lg:p-11'>
           <h2 className='glassmorphism max-w-[273px] rounded py-2 text-center text-base font-normal'>
-            {calls && calls.length > 0 && todayCalls[0] !== undefined  ? 'Cuộc họp gần nhất lúc: ' + todayCalls[0] : 'Hôm nay không có cuộc họp nào.'}
+            {calls && calls.length > 0 && todayCalls[0] !== undefined  ? 'Latest meeting at: ' + todayCalls[0] : 'There are no meetings today.'}
           </h2>
           <div className='flex flex-col gap-2'>
             <h1 className='text-4xl font-extrabold lg:text-7xl'>
