@@ -2,14 +2,7 @@ import { cn } from '@/lib/utils'
 import { CallControls, CallParticipantsList, CallStatsButton, CallingState, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk'
 import React, { useState } from 'react'
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { LayoutList, Search, Users } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import EndCallButton from './EndCallButton'
@@ -46,7 +39,7 @@ const MeetingRoom = () => {
   return (
     <section className='relative h-screen w-full overflow-hidden pt-4 text-white'>
       <div className='relative flex size-full items-center justify-center'>
-        <div className='flex size-full max-w-[1000px] items-center'>
+        <div className='flex size-full max-w-[95%] mb-[50px]'>
           <CallLayout />
         </div>
         <div className={cn('h-[calc(100vh-86px)] hidden ml-2', { 'show-block': showPaticipants })}>
@@ -84,6 +77,7 @@ const MeetingRoom = () => {
             </div>
         </button>
         {!isPersonalRoom && <EndCallButton />}
+
       </div>
     </section>
   )

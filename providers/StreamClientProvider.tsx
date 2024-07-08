@@ -5,11 +5,13 @@ import Loader from '@/components/Loader';
 import { useUser } from '@clerk/nextjs';
 import { StreamVideoClient, StreamVideo } from '@stream-io/video-react-sdk';
 import { ReactNode, useEffect, useState } from 'react';
+import { StreamChat } from 'stream-chat';
   
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 
 const StreamVideoProvider = ({ children } : {children : ReactNode}) => {
-    const[videoClient, setVideoClient] = useState<StreamVideoClient>()
+    const [videoClient, setVideoClient] = useState<StreamVideoClient>()
+    
     //return current auth state
     const { user, isLoaded } = useUser();
     
@@ -19,7 +21,7 @@ const StreamVideoProvider = ({ children } : {children : ReactNode}) => {
         if(!apiKey) throw new Error('Stream API kye missing')
         
         //create new video client
-        const client = new StreamVideoClient({
+        const videoClient = new StreamVideoClient({
             apiKey,
             user: {
                 id: user?.id,
@@ -28,10 +30,12 @@ const StreamVideoProvider = ({ children } : {children : ReactNode}) => {
             },
             tokenProvider,
         })
-        setVideoClient(client);
+        setVideoClient(videoClient);
         
     }, [user, isLoaded])
     
+    
+
     if(!videoClient) return <Loader />
 
     return (
