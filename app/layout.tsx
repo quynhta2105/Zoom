@@ -23,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      
       <ClerkProvider
         appearance={{
           layout: {
@@ -38,10 +39,10 @@ export default function RootLayout({
           }
         }}
       >
-        <body className={`${inter.className} bg-dark-2`}>
-          {children}
-          <Toaster />
-        </body>
+          <body className={`${inter.className} bg-dark-2`}>
+            {children}
+            <Toaster />
+          </body>
       </ClerkProvider>
     </html>
   );
