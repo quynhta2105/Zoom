@@ -10,13 +10,9 @@
 
 /* ======== stream css overrides ======== */
 
-.str-video__screen-share-overlay > .str-video__icon,
-.str-video__screen-share-overlay > .str-video__screen-share-overlay__title,
 .str-video__participant-view > .str-video__screen-share-overlay {
   display: none;
 }
-
-.str-video__participant-view
 
 .str-video__screen-share-overlay > .str-video__screen-share-overlay__button{
   display: none;
