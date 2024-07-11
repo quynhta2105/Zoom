@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import { CallControls, CallParticipantsList, CallStatsButton, CallingState, PaginatedGridLayout, SpeakerLayout, useBackgroundFilters, useCall, useCallStateHooks } from '@stream-io/video-react-sdk'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { LayoutList, Users } from 'lucide-react'

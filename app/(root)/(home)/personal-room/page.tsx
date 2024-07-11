@@ -31,8 +31,6 @@ function PersonalRoom() {
   const startRoom = async () => {
     if (!client || !user) return;
 
-    
-    
     if(!call) {
       const newCall = client.call("default", meetingId!);
 

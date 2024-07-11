@@ -62,7 +62,6 @@ function MeetingTypeList() {
 
       toast({ title: "Meeting created" })
     } catch (error) {
-      console.log(error);
       toast({ title: "Fail to create meeting" })
     }
   }
@@ -138,13 +137,13 @@ function MeetingTypeList() {
           isOpen={meetingState === 'isScheduleMeeting'}
           onClose={() => setMeetingState(undefined)}  
           title="Meeting Created"
-          className=" text-center"
+          className="text-center gap-4"
           handleClick={() => {
             navigator.clipboard.writeText(meetingLink);
             toast({ title: 'Link copied' })
           }}
           image='/icons/checked.svg'
-          buttonIcon='/iscons/coppy.svg'
+          buttonIcon='/icons/copy.svg'
           buttonText='Coppy Meeting Link'
         />
       )}
