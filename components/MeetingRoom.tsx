@@ -2,11 +2,14 @@ import { cn } from '@/lib/utils'
 import { CallControls, CallParticipantsList, CallStatsButton, CallingState, PaginatedGridLayout, SpeakerLayout, useBackgroundFilters, useCall, useCallStateHooks } from '@stream-io/video-react-sdk'
 import React, { useState } from 'react'
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { LayoutList, Users } from 'lucide-react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import EndCallButton from './EndCallButton'
 import Loader from './Loader'
+import { useToast } from './ui/use-toast'
+import { Button } from './ui/button'
+import Image from 'next/image'
 
 type CallLayoutType = 'grid' | 'speaker-left' | 'speaker-right'
 
@@ -15,10 +18,15 @@ const MeetingRoom = () => {
   const isPersonalRoom = searchParams.get('personal')
   const [layout, setLayout] = useState<CallLayoutType>('speaker-left')
   const [showPaticipants, setShowPaticipants] = useState(false)
-  
   const { useCallCallingState } = useCallStateHooks();
   const callingState = useCallCallingState();
   const router = useRouter();
+  const path = usePathname();
+  const { toast } = useToast();
+  
+  
+  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}${path}`
+  console.log(meetingLink);
 
   if(callingState !== CallingState.JOINED) return <Loader />
 
@@ -77,6 +85,19 @@ const MeetingRoom = () => {
               <Users size={20} className='text-white' />
             </div>
         </button>
+        <div className='w-10 h-9 cursor-pointer hover:bg-[#4c535b] bg-[#19232d] flex justify-center align-middle rounded-2xl' onClick={() => {
+            navigator.clipboard.writeText(meetingLink);
+            toast({
+              title: "Link Copied",
+            });
+        }}>
+          <Image
+            src="/icons/share.svg"
+            alt="share"
+            width={25}
+            height={25}
+          />
+        </div>
         {!isPersonalRoom && <EndCallButton />}
 
       </div>
