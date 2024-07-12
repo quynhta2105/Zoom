@@ -10,6 +10,10 @@
 
 /* ======== stream css overrides ======== */
 
+.str-video__video--tall {
+  object-fit: none
+}
+
 .str-video__participant-view > .str-video__screen-share-overlay {
   /* display: none; */
   background: none;
@@ -69,9 +73,20 @@
 
 /* ==== clerk class override ===== */
 
+.cl-internal-3fp9as:hover,
+.cl-internal-1o11va6:hover,
+.cl-avatarImageActionsUpload:hover,
+.cl-badge {
+  color: #C6BBBB
+}
+
+.cl-internal-1nn89fl,
+.cl-avatarImageActionsUpload {
+  color: white
+}
+
 .cl-providerIcon__github {
   filter: invert(1);
-
 }
 
 .cl-userButtonPopoverActionButtonIcon {

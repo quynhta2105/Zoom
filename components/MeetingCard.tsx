@@ -30,23 +30,7 @@ const MeetingCard = ({icon, title, date, isPreviousMeeting, buttonIcon1, handleC
           </div>
         </div>
       </article>
-      <article className={cn("flex justify-center relative", {})}>
-        <div className="relative flex w-full max-sm:hidden">
-          {avatarImages.map((img, index) => (
-            <Image
-              key={index}
-              src={img}
-              alt="attendees"
-              width={40}
-              height={40}
-              className={cn("rounded-full", { absolute: index > 0 })}
-              style={{ top: 0, left: index * 28 }}
-            />
-          ))}
-          <div className="flex-center absolute left-[136px] size-10 rounded-full border-[5px] border-dark-3 bg-dark-4">
-            +5
-          </div>
-        </div>
+      <article className={cn("flex justify-end relative", {})}>
         {!isPreviousMeeting && (
           <div className="flex gap-2">
             <Button onClick={handleClick} className="rounded bg-blue-1 px-6">
@@ -72,14 +56,6 @@ const MeetingCard = ({icon, title, date, isPreviousMeeting, buttonIcon1, handleC
               />
               &nbsp; Copy Link
             </Button>
-            {/* <Button 
-              className='rounded bg-red-500 px-6'
-              // onClick={ async () => {
-              //   (await call?.leave());
-              // }}
-            >
-              Delete
-            </Button> */}
           </div>
         )}
       </article>
