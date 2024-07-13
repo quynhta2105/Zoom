@@ -3,9 +3,13 @@
 import MeetingTypeList from '@/components/MeetingTypeList';
 import { useGetCalls } from '@/hooks/useGetCalls';
 import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 function Home() {
+  const { user } = useUser();
+  const router = useRouter();
+  if(!user) router.push('/sign-in')
 
   const { upcomingCalls } = useGetCalls();
   const getCalls = () => {
@@ -17,8 +21,6 @@ function Home() {
   }).map((call) => {
     return call?.state?.startsAt?.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'})
   }).sort();
-
-  const { user } = useUser();
   
   const time = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
   const date = (new Intl.DateTimeFormat('en-US', {dateStyle: 'full'})).format(new Date())
