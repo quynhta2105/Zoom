@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React from 'react'
 import { Button } from './ui/button';
 import { useToast } from './ui/use-toast';
-import { avatarImages } from '@/constants';
 import { cn } from '@/lib/utils';
 
 interface MeetingCardProps {
@@ -30,7 +29,7 @@ const MeetingCard = ({icon, title, date, isPreviousMeeting, buttonIcon1, handleC
           </div>
         </div>
       </article>
-      <article className={cn("flex justify-end relative", {})}>
+      <article className={cn("flex justify-end relative gap-2", {})}>
         {!isPreviousMeeting && (
           <div className="flex gap-2">
             <Button onClick={handleClick} className="rounded bg-blue-1 px-6">
@@ -39,7 +38,9 @@ const MeetingCard = ({icon, title, date, isPreviousMeeting, buttonIcon1, handleC
               )}
               &nbsp; {buttonText}
             </Button>
-            <Button
+          </div>
+        )}
+        <Button
               onClick={() => {
                 navigator.clipboard.writeText(link);
                 toast({
@@ -56,8 +57,6 @@ const MeetingCard = ({icon, title, date, isPreviousMeeting, buttonIcon1, handleC
               />
               &nbsp; Copy Link
             </Button>
-          </div>
-        )}
       </article>
     </section>
   )
