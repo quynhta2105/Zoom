@@ -58,8 +58,6 @@ const EndCallButton = () => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-        // await call.endCall();
-        // router.push('/');
   )
 }
 

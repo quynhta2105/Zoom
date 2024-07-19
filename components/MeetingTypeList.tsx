@@ -34,6 +34,10 @@ function MeetingTypeList() {
         toast({ title: "Please select a date and time" })
         return;
       }
+      if(values.dateTime < new Date()){
+        toast({ title: "Invalid time" })
+        return;
+      }
       //generate random id
       const id = crypto.randomUUID();
       //creates a new call
