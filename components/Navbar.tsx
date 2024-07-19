@@ -13,7 +13,6 @@ const Navbar = () => {
       window.location.reload();
       localStorage.setItem('reloaded', 'true');
     }
-    console.log(localStorage.getItem('reloaded'));
   }, []);
   
 

@@ -8,14 +8,12 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import EndCallButton from './EndCallButton'
 import Loader from './Loader'
 import { useToast } from './ui/use-toast'
-import { Button } from './ui/button'
 import Image from 'next/image'
 
 type CallLayoutType = 'grid' | 'speaker-left' | 'speaker-right'
 
 const MeetingRoom = () => {
-  const searchParams = useSearchParams();
-  const isPersonalRoom = searchParams.get('personal')
+
   const [layout, setLayout] = useState<CallLayoutType>('speaker-left')
   const [showPaticipants, setShowPaticipants] = useState(false)
   const { useCallCallingState } = useCallStateHooks();
@@ -98,7 +96,7 @@ const MeetingRoom = () => {
             height={25}
           />
         </div>
-        {!isPersonalRoom && <EndCallButton />}
+        <EndCallButton />
 
       </div>
     </section>

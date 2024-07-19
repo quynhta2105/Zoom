@@ -9,25 +9,29 @@ import React, { useEffect } from 'react'
 function Home() {
   const { user } = useUser();
   const router = useRouter();
+
+  //check if no logged then back to sign in page
   if(!user) {
     router.push('/sign-in');
   }
 
+  //reload to get user button
   useEffect(() => {
     if (!localStorage.getItem('reloaded')) {
       window.location.reload();
       localStorage.setItem('reloaded', 'true');
     }
-    console.log(localStorage.getItem('reloaded'));
   }, []);
 
   const { upcomingCalls } = useGetCalls();
 
+  //get upcoming call lists
   const getCalls = () => {
     return upcomingCalls;
   };
-
   const calls = getCalls();
+  
+  //filter and sort
   const todayCalls = calls.filter((call) => {
     return call?.state?.startsAt?.toLocaleDateString() === new Date().toLocaleDateString()
   }).map((call) => {
