@@ -39,13 +39,14 @@ export const useGetCalls = () => {
 
     const now = new Date();
 
-    const endedCalls = calls.filter(({state: {startsAt, endedAt}}: Call) => {
+    const endedCalls = calls.filter(({state: {startsAt, endedAt, custom}}: Call) => {
         // return(startsAt && new Date(startsAt) < now || !!endedAt)
-        return(startsAt && new Date(startsAt) < new Date(now.setTime(new Date().getTime() - (30 * 60 * 1000))) || !!endedAt)
+        return(startsAt && new Date(startsAt) < new Date(now.setTime(new Date().getTime() - (30 * 60 * 1000))) || !!endedAt )
     });
-    const upcomingCalls = calls.filter(({ state: { startsAt }}: Call) => {
+    
+    const upcomingCalls = calls.filter(({ state: { startsAt, custom }}: Call) => {
         // return(startsAt && new Date(startsAt) > now)
-        return startsAt && new Date(startsAt) > new Date(now.setTime(new Date().getTime() - (30 * 60 * 1000)))
+        return startsAt && new Date(startsAt) > new Date(now.setTime(new Date().getTime() - (30 * 60 * 1000))) && custom?.description?.substring(0, 25) != 'Instant meeting'
     })
 
     return {
