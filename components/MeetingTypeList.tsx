@@ -34,7 +34,7 @@ function MeetingTypeList() {
         toast({ title: "Please select a date and time" })
         return;
       }
-      if(values.dateTime < new Date()){
+      if(values.dateTime < new Date(new Date().getTime() - (3 * 60 * 1000))){
         toast({ title: "Invalid time" })
         return;
       }
