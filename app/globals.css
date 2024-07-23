@@ -10,6 +10,11 @@
 
 /* ======== stream css overrides ======== */
 
+.cl-internal-15di0mo,
+.cl-internal-rvg68x {
+  color: white
+}
+
 .str-video__video--tall {
   object-fit: none
 }
